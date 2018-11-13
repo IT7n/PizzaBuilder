@@ -7,4 +7,5 @@ import de.it7n.pizzabuilder.entities.Pizza;
  * @author Collin Alpert
  */
 public class PizzaService extends BaseService<Pizza> {
+
 }
