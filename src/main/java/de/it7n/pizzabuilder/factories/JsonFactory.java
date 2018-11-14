@@ -6,7 +6,7 @@ import com.github.collinalpert.java2db.entities.BaseEntity;
 import java.io.IOException;
 
 public class JsonFactory {
-	public static <T extends BaseEntity> String entityToJson(T obj) {
+	public static String entityToJson(Object obj) {
 		try {
 			var mapper = new ObjectMapper();
 			return mapper.writeValueAsString(obj);
@@ -16,7 +16,11 @@ public class JsonFactory {
 		return null;
 	}
 
-	public static String generateFailure(int i, String s) {
-		return String.format("{\"success\": false, \"statusCode\": %d, \"message\": %s}", i, s);
+	public static String generateFailure(int statusCode, String failureMessage) {
+		return String.format("{\"success\": false, \"statusCode\": %d, \"message\": \"%s\"}", statusCode, failureMessage);
+	}
+
+	public static String generateSuccess(String successMessage) {
+		return String.format("{\"success\": true, \"statusCode\": 200, \"message\": \"%s\"}", successMessage);
 	}
 }
