@@ -2,9 +2,10 @@ package de.it7n.pizzabuilder.entities;
 
 import com.github.collinalpert.java2db.annotations.ForeignKeyEntity;
 import com.github.collinalpert.java2db.annotations.TableName;
+import com.github.collinalpert.java2db.entities.BaseEntity;
 
 @TableName("linkedorderpizza")
-public class LinkedOrderPizza {
+public class LinkedOrderPizza extends BaseEntity {
     private int orderId;
     @ForeignKeyEntity("orderId")
     private Order order;
