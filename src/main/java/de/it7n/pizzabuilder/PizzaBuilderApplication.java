@@ -2,7 +2,17 @@ package de.it7n.pizzabuilder;
 
 import com.github.collinalpert.java2db.database.DBConnection;
 import com.github.collinalpert.java2db.utilities.IoC;
+import de.it7n.pizzabuilder.entities.Customer;
+import de.it7n.pizzabuilder.entities.Ingredient;
+import de.it7n.pizzabuilder.entities.LinkedOrderPizza;
+import de.it7n.pizzabuilder.entities.LinkedPizzaIngredient;
+import de.it7n.pizzabuilder.entities.Order;
 import de.it7n.pizzabuilder.entities.Pizza;
+import de.it7n.pizzabuilder.services.CustomerService;
+import de.it7n.pizzabuilder.services.IngredientService;
+import de.it7n.pizzabuilder.services.LinkedOrderPizzaService;
+import de.it7n.pizzabuilder.services.LinkedPizzaIngredientService;
+import de.it7n.pizzabuilder.services.OrderService;
 import de.it7n.pizzabuilder.services.PizzaService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -42,6 +52,11 @@ public class PizzaBuilderApplication {
 			DBConnection.USERNAME = userName;
 			DBConnection.PASSWORD = password;
 
+			IoC.registerService(Customer.class, new CustomerService());
+			IoC.registerService(Ingredient.class, new IngredientService());
+			IoC.registerService(LinkedOrderPizza.class, new LinkedOrderPizzaService());
+			IoC.registerService(LinkedPizzaIngredient.class, new LinkedPizzaIngredientService());
+			IoC.registerService(Order.class, new OrderService());
 			IoC.registerService(Pizza.class, new PizzaService());
 		}
 	}

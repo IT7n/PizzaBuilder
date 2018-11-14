@@ -1,24 +1,22 @@
 package de.it7n.pizzabuilder.factories;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.collinalpert.java2db.entities.BaseEntity;
 
 import java.io.IOException;
 
 public class JsonFactory {
-    public static <T extends BaseEntity> String entityToJson(T obj) {
-        try {
-            ObjectMapper mapper = new ObjectMapper();
+	public static <T extends BaseEntity> String entityToJson(T obj) {
+		try {
+			var mapper = new ObjectMapper();
+			return mapper.writeValueAsString(obj);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
-            String jsonString = mapper.writeValueAsString(obj);
-            System.out.println(jsonString);
-
-            return jsonString;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+	public static String generateFailure(int i, String s) {
+		return String.format("{\"success\": false, \"statusCode\": %d, \"message\": %s}", i, s);
+	}
 }

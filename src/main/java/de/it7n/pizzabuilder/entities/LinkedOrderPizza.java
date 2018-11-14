@@ -6,34 +6,38 @@ import com.github.collinalpert.java2db.entities.BaseEntity;
 
 @TableName("linkedorderpizza")
 public class LinkedOrderPizza extends BaseEntity {
-    private int orderId;
-    @ForeignKeyEntity("orderId")
-    private Order order;
-    private int pizzaId;
-    @ForeignKeyEntity("pizzaId")
-    private Pizza pizza;
 
-    public int getOrderId() {
-        return orderId;
-    }
+	private int orderId;
 
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
+	@ForeignKeyEntity("orderId")
+	private Order order;
 
-    public Order getOrder() {
-        return order;
-    }
+	private int pizzaId;
 
-    public int getPizzaId() {
-        return pizzaId;
-    }
+	@ForeignKeyEntity("pizzaId")
+	private Pizza pizza;
 
-    public void setPizzaId(int pizzaId) {
-        this.pizzaId = pizzaId;
-    }
+	public int getOrderId() {
+		return orderId;
+	}
 
-    public Pizza getPizza() {
-        return pizza;
-    }
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public int getPizzaId() {
+		return pizzaId;
+	}
+
+	public void setPizzaId(int pizzaId) {
+		this.pizzaId = pizzaId;
+	}
+
+	public Pizza getPizza() {
+		return pizza;
+	}
 }
