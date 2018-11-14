@@ -1,5 +1,6 @@
 package de.it7n.pizzabuilder.entities;
 
+import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.github.collinalpert.java2db.annotations.TableName;
 import com.github.collinalpert.java2db.entities.BaseEntity;
 
