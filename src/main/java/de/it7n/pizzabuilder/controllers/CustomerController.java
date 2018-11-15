@@ -37,13 +37,10 @@ public class CustomerController {
 	}
 
 	@GetMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
-	public String login(@RequestParam String userName, @RequestParam String password) {
+	public Customer login(@RequestParam String userName, @RequestParam String password) {
 		var customerService = IoC.resolveService(CustomerService.class);
 		var customerOptional = customerService.findUser(userName, hash(password));
-		if (customerOptional.isPresent()) {
-			return JsonFactory.entityToJson(customerOptional.get());
-		}
-		return JsonFactory.generateFailure(404, "Kunde konnte nicht gefunden werden.");
+		return customerOptional.orElse(null);
 	}
 
 	@PostMapping(value = "/signup", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -51,7 +48,7 @@ public class CustomerController {
 		customer.setPassword(hash(customer.getPassword()));
 		try {
 			IoC.resolveService(CustomerService.class).create(customer);
-			return JsonFactory.generateSuccess("Kunde wurde erfolgreich erstellt.");
+			return JsonFactory.generateSuccess(201, "Kunde wurde erfolgreich erstellt.");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return JsonFactory.generateFailure(400, "SQLException");
