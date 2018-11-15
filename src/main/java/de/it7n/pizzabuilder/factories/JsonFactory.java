@@ -1,10 +1,5 @@
 package de.it7n.pizzabuilder.factories;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.github.collinalpert.java2db.entities.BaseEntity;
-
-import java.io.IOException;
-
 public class JsonFactory {
 
 	public static String generateFailure(int statusCode, String failureMessage) {
