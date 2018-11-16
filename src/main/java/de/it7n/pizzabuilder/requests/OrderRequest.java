@@ -6,6 +6,7 @@ package de.it7n.pizzabuilder.requests;
 public class OrderRequest {
 	private String customerEmail;
 	private IngredientRequest ings;
+	private double totalPrice;
 
 	public String getCustomerEmail() {
 		return customerEmail;
@@ -21,5 +22,13 @@ public class OrderRequest {
 
 	public void setIngs(IngredientRequest ings) {
 		this.ings = ings;
+	}
+
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 }

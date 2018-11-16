@@ -11,12 +11,22 @@ public class Order extends BaseEntity {
 
 	private double totalPrice;
 
-	private int customerId;
+	private long customerId;
 
 	@ForeignKeyEntity("customerId")
 	private Customer customer;
 
 	private LocalDateTime time;
+
+	public Order(double totalPrice, long customerId) {
+		this();
+		this.totalPrice = totalPrice;
+		this.customerId = customerId;
+	}
+
+	public Order() {
+		this.time = LocalDateTime.now();
+	}
 
 	public double getTotalPrice() {
 		return totalPrice;
@@ -26,11 +36,11 @@ public class Order extends BaseEntity {
 		this.totalPrice = totalPrice;
 	}
 
-	public int getCustomerId() {
+	public long getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(int customerId) {
+	public void setCustomerId(long customerId) {
 		this.customerId = customerId;
 	}
 
