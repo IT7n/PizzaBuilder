@@ -5,6 +5,7 @@ import de.it7n.pizzabuilder.entities.Customer;
 import de.it7n.pizzabuilder.factories.JsonFactory;
 import de.it7n.pizzabuilder.services.CustomerService;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -36,19 +37,26 @@ public class CustomerController {
 		}
 	}
 
+	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping(value = "/login", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Customer login(@RequestParam String userName, @RequestParam String password) {
+	public Customer login(@RequestParam String email, @RequestParam String password) {
 		var customerService = IoC.resolveService(CustomerService.class);
-		var customerOptional = customerService.findUser(userName, hash(password));
+		var customerOptional = customerService.findUser(email, hash(password));
 		return customerOptional.orElse(null);
 	}
 
+	@CrossOrigin(origins = "http://localhost:3000")
 	@PostMapping(value = "/signup", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String signup(@RequestBody Customer customer) {
 		customer.setPassword(hash(customer.getPassword()));
 		try {
-			IoC.resolveService(CustomerService.class).create(customer);
-			return JsonFactory.generateSuccess(201, "Kunde wurde erfolgreich erstellt.");
+			var service = IoC.resolveService(CustomerService.class);
+			var email = customer.getEmail();
+			if (!service.any(c -> c.getEmail() == email)) {
+				service.create(customer);
+				return JsonFactory.generateSuccess(201, "Kunde wurde erfolgreich erstellt.");
+			}
+			return JsonFactory.generateFailure(206, "Kunde existiert schon.");
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return JsonFactory.generateFailure(400, "SQLException");

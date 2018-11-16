@@ -10,7 +10,11 @@ import java.util.Optional;
  */
 public class CustomerService extends BaseService<Customer> {
 
-    public Optional<Customer> findUser(String email, String password){
-        return getSingle(customer -> customer.getEmail() == email && customer.getPassword() == password);
-    }
+	public Optional<Customer> findUser(String email, String password) {
+		return getSingle(customer -> customer.getEmail() == email && customer.getPassword() == password);
+	}
+
+	public Optional<Customer> getByEmail(String email) {
+		return getSingle(customer -> customer.getEmail() == email);
+	}
 }
