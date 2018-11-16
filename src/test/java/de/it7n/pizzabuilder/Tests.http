@@ -29,3 +29,23 @@ Host: {{host}}
 }
 
 ###
+
+POST /order
+Content-Type: application/json
+Host: {{host}}
+
+{
+  "customerEmail": "collinalpert@gmail.com",
+  "totalPrice": 13.56,
+  "ings": {
+    "mozzarella": 1,
+    "olive": 0,
+    "mushroom": 0,
+    "pepperoni": 1,
+    "redPepper": 0,
+    "greenPepper": 0,
+    "tomato": 1
+  }
+}
+
+###

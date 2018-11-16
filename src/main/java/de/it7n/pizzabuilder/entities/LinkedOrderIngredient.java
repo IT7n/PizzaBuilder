@@ -12,7 +12,7 @@ public class LinkedOrderIngredient extends BaseEntity {
 	@ForeignKeyEntity("orderId")
 	private Order order;
 
-	private boolean hasMozarella;
+	private boolean hasMozzarella;
 
 	private boolean hasOlive;
 	private boolean hasMushroom;
@@ -40,8 +40,8 @@ public class LinkedOrderIngredient extends BaseEntity {
 	public LinkedOrderIngredient() {
 	}
 
-	public void hasMozarella(boolean hasMozarella) {
-		this.hasMozarella = hasMozarella;
+	public void hasMozzarella(boolean hasMozzarella) {
+		this.hasMozzarella = hasMozzarella;
 	}
 
 	public void hasOlive(boolean hasOlive) {

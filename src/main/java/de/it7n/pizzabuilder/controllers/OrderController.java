@@ -36,7 +36,7 @@ public class OrderController {
 			var linkedOrder = new LinkedOrderIngredient(orderId);
 			var ingredients = request.getIngs();
 			if (ingredients.getMozzarella() == 1) {
-				linkedOrder.hasMozarella(true);
+				linkedOrder.hasMozzarella(true);
 			}
 			if (ingredients.getOlive() == 1) {
 				linkedOrder.hasOlive(true);
