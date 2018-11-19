@@ -35,27 +35,13 @@ public class OrderController {
 			var orderId = orderService.create(new Order(request.getTotalPrice(), customer.get().getId()));
 			var linkedOrder = new LinkedOrderIngredient(orderId);
 			var ingredients = request.getIngs();
-			if (ingredients.getMozzarella() == 1) {
-				linkedOrder.hasMozzarella(true);
-			}
-			if (ingredients.getOlive() == 1) {
-				linkedOrder.hasOlive(true);
-			}
-			if (ingredients.getMushroom() == 1) {
-				linkedOrder.hasMushroom(true);
-			}
-			if (ingredients.getPepperoni() == 1) {
-				linkedOrder.hasPepperoni(true);
-			}
-			if (ingredients.getRedPepper() == 1) {
-				linkedOrder.hasRedPepper(true);
-			}
-			if (ingredients.getGreenPepper() == 1) {
-				linkedOrder.hasGreenPepper(true);
-			}
-			if (ingredients.getTomato() == 1) {
-				linkedOrder.hasTomato(true);
-			}
+			linkedOrder.hasMozzarella(ingredients.getMozzarella() == 1);
+			linkedOrder.hasOlive(ingredients.getOlive() == 1);
+			linkedOrder.hasMushroom(ingredients.getMushroom() == 1);
+			linkedOrder.hasPepperoni(ingredients.getPepperoni() == 1);
+			linkedOrder.hasRedPepper(ingredients.getRedPepper() == 1);
+			linkedOrder.hasGreenPepper(ingredients.getGreenPepper() == 1);
+			linkedOrder.hasTomato(ingredients.getTomato() == 1);
 			linkedOrderIngredientService.create(linkedOrder);
 			return JsonFactory.generateSuccess(201, "Bestellung erfolgreich erstellt.");
 		} catch (SQLException e) {
