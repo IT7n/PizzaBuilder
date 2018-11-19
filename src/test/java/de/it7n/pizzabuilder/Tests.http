@@ -10,12 +10,6 @@ Host: {{host}}
 
 ###
 
-GET /ingredients
-Accept: application/json
-Host: {{host}}
-
-###
-
 POST /signup
 Content-Type: application/json
 Host: {{host}}
@@ -25,7 +19,7 @@ Host: {{host}}
   "lastName": "User",
   "address": "Teststraße n, 12345 Hamburg",
   "password": "Test123",
-  "email": "testuser@gmail.com"
+  "email": "test.user@gmail.com"
 }
 
 ###
@@ -37,7 +31,7 @@ Host: {{host}}
 {
   "customerEmail": "collinalpert@gmail.com",
   "totalPrice": 13.56,
-  "ings": {
+  "ingredients": {
     "mozzarella": 1,
     "olive": 0,
     "mushroom": 0,

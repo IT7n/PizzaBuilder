@@ -34,7 +34,7 @@ public class OrderController {
 			}
 			var orderId = orderService.create(new Order(request.getTotalPrice(), customer.get().getId()));
 			var linkedOrder = new LinkedOrderIngredient(orderId);
-			var ingredients = request.getIngs();
+			var ingredients = request.getIngredients();
 			linkedOrder.hasMozzarella(ingredients.getMozzarella() == 1);
 			linkedOrder.hasOlive(ingredients.getOlive() == 1);
 			linkedOrder.hasMushroom(ingredients.getMushroom() == 1);

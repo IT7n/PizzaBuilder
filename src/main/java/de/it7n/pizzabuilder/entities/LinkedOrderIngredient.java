@@ -21,18 +21,6 @@ public class LinkedOrderIngredient extends BaseEntity {
 	private boolean hasGreenPepper;
 	private boolean hasTomato;
 
-	public long getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(long orderId) {
-		this.orderId = orderId;
-	}
-
-	public Order getOrder() {
-		return order;
-	}
-
 	public LinkedOrderIngredient(long orderId) {
 		this.orderId = orderId;
 	}

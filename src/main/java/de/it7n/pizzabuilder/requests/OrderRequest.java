@@ -5,30 +5,19 @@ package de.it7n.pizzabuilder.requests;
  */
 public class OrderRequest {
 	private String customerEmail;
-	private IngredientRequest ings;
+	private IngredientRequest ingredients;
 	private double totalPrice;
 
 	public String getCustomerEmail() {
 		return customerEmail;
 	}
 
-	public void setCustomerEmail(String customerEmail) {
-		this.customerEmail = customerEmail;
-	}
-
-	public IngredientRequest getIngs() {
-		return ings;
-	}
-
-	public void setIngs(IngredientRequest ings) {
-		this.ings = ings;
+	public IngredientRequest getIngredients() {
+		return ingredients;
 	}
 
 	public double getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
 }

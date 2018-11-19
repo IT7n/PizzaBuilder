@@ -27,32 +27,4 @@ public class Order extends BaseEntity {
 	public Order() {
 		this.time = LocalDateTime.now();
 	}
-
-	public double getTotalPrice() {
-		return totalPrice;
-	}
-
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
-	public long getCustomerId() {
-		return customerId;
-	}
-
-	public void setCustomerId(long customerId) {
-		this.customerId = customerId;
-	}
-
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public LocalDateTime getTime() {
-		return time;
-	}
-
-	public void setTime(LocalDateTime time) {
-		this.time = time;
-	}
 }
